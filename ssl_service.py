@@ -36,7 +36,7 @@ def ssl_scan(url):
  """   
 # ssl 코드
 from urllib.parse import urlparse
-import socket,ssl # 이거 어떻게 사용하는 거지
+import socket,ssl #
 from datetime import datetime,timezone
 
 
@@ -53,7 +53,7 @@ class SSL_scan:
         self.hostname = u.hostname
         self.timeout = timeout
         
-    @staticmethod #정적 함수 독립적으로 활동가능
+    @staticmethod 
     def _parse_cert_time(s:str): #ssl 인증서의 유효기간 문자열을 파싱해 datetime 객체로 변환
         """인증서 시간 문자열"""
 
