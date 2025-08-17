@@ -120,8 +120,8 @@ class SSL_scan:
                     cert = ssock.getpeercert() 
 
             #cert 데이터 구조
-            #subject 타입:튜플 key,value  (((CountryName,'us')),(('organizationName',Example Inc'),),(('CommonName','example.com'),))
-            # issurer 타입: 튜플 key,value 발급자 DN, subject랑 동일한 구조
+            #subject 인증서주체 타입:튜플 key,value  (((CountryName,'us')),(('organizationName',Example Inc'),),(('CommonName','example.com'),))
+            # issuer 인증서 발급기관 타입: 튜플 key,value 발급자 DN, subject랑 동일한 구조
             # version 타입:int 일반적으로 3 아마 지금 버젼이 3인거 같다.
             # serialNumber str (16진 문자열) 씨리얼 넘버 언제 사용하는 걸까.
             # notBefore,notAfter : str 예:'Aug 15 12:00:00 2025 GMT
@@ -134,7 +134,7 @@ class SSL_scan:
 
 
             subject_cn = self._pick_cn(cert.get("subject",[]))#cn 데이터 받아옴
-            issuer_cn = self._pick_cn(cert.get("issuer",[]))# 마찬가지
+            issuer_cn = self._pick_cn(cert.get("issuer",[]))# 
 
 
 
