@@ -1,0 +1,37 @@
+스키마 정리
+
+3.1 입력스키마(URL ->Host)
+
+정의 
+	-url : str -> 스킴없으면 https:// 자동 부착
+	-hostname: str -> u= urlparse(self.url)
+			u.hostname
+
+	timeout : int 연결 / io 타임리밋
+
+규칙
+	-https만 허용
+	-국제 도메인은 idna(퓨니코드)로 변환해 sni/검증에 사용
+	host_idna = hostname.encode('idna').decode('ascii')
+
+3.2 인증서 스키마 (cert: dict)
+	생성 cert = ssock.getpeercert(binary_form=False)
+
+	
+	대표키
+		subject/issuer CN(식별명)
+		version: 보통 3 (X.509 v3 확장 필드 지원) 
+		serialNumber : 16진문자열
+		notbefore,notafter : 문자열 시간 (GMT,UTC)
+		subjectAltName : ('DNS','example.com') (라벨,값) 
+		
+		주의 getpeercert() 는 leaf 인증서 1장 중심 정보
+
+
+3.3 DN스키마 (subject/issuer의 구조)
+
+	형태: tuple[(키,값),(키,값)(..)]
+
+	키: commoname ->cn 인증서 주체,인증서 발급자 
+
+ 
